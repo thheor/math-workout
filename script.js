@@ -41,7 +41,6 @@ continueBtn.addEventListener('click', () => {
     noSoal++;
     nomorSoal.textContent = noSoal;
     setUp();
-    ansResult.style.display = 'none';
     main.classList.remove('pointer-events-none');
 });
 
@@ -50,7 +49,11 @@ nomorSoal.textContent = noSoal;
 let soalIndex = -1;
 let lastIndex = -1;
 
+let currentQuestion = null;
+
 function setUp(){
+    ansResult.style.display = 'none';
+
     while(soalIndex === lastIndex){
         soalIndex = Math.floor(Math.random() * soalMath.length);
     }
@@ -59,13 +62,13 @@ function setUp(){
 }
 
 function createSoal(soalIndex){
-    document.addEventListener("DOMContentLoaded", () => {
-        soal.innerHTML = katex.renderToString(soalMath[soalIndex].question);
-        btnA.innerHTML = katex.renderToString(soalMath[soalIndex].option[0]);
-        btnB.innerHTML = katex.renderToString(soalMath[soalIndex].option[1]);
-        btnC.innerHTML = katex.renderToString(soalMath[soalIndex].option[2]);
-        btnD.innerHTML = katex.renderToString(soalMath[soalIndex].option[3]);
-    });
+    currentQuestion = soalMath[soalIndex];
+
+    soal.innerHTML = katex.renderToString(soalMath[soalIndex].question);
+    btnA.innerHTML = katex.renderToString(soalMath[soalIndex].option[0]);
+    btnB.innerHTML = katex.renderToString(soalMath[soalIndex].option[1]);
+    btnC.innerHTML = katex.renderToString(soalMath[soalIndex].option[2]);
+    btnD.innerHTML = katex.renderToString(soalMath[soalIndex].option[3]);
 
     console.log(soalIndex);
 }
@@ -73,7 +76,14 @@ function createSoal(soalIndex){
 function checkAnswer(e){
     main.classList.add('pointer-events-none');
     const index = Math.floor(Math.random() * 5);
-    if(e.currentTarget.textContent === soalMath[soalIndex].answer){
+    
+    btnA.dataset.latex = currentQuestion.option[0];
+    btnB.dataset.latex = currentQuestion.option[1];
+    btnC.dataset.latex = currentQuestion.option[2];
+    btnD.dataset.latex = currentQuestion.option[3];
+
+    console.log(e.currentTarget.dataset.latex);
+    if(e.currentTarget.dataset.latex === soalMath[soalIndex].answer){
         correctCount++;
         jumlahBenar.textContent = correctCount;
         feedback.textContent = correctAns[index];

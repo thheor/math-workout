@@ -33,42 +33,72 @@ export let soalMath = [
     },
     {
         question: '\\cos(-45^\\circ)=...',
-        answer: '45',
+        answer: '\\frac{1}{2}\\sqrt{2}', 
         option: 
-        ['10',
-         '22',
-         '35',
-         '45'        
+        ['\\frac{-1}{2}\\sqrt{2}',
+         '\\frac{1}{2}\\sqrt{2}',
+         '\\frac{1}{2}',
+         '\\frac{-1}{2}'        
         ]
     },
     {
         question: 'sin(\\frac{\\pi}{2}-90^\\circ)=...',
-        answer: '45',
+        answer: '0',
         option: 
-        ['10',
-         '22',
-         '35',
-         '45'        
+        ['0',
+         '\\frac{1}{2}\\sqrt{3}',
+         '\\frac{1}{2}\\sqrt{2}',
+         '\\frac{1}{2}'        
         ]
     },
     {
         question: 'cos(\\frac{\\pi}{2}-45^\\circ)=...',
-        answer: '45',
+        answer: '\\frac{1}{2}\\sqrt{2}',
         option: 
-        ['10',
-         '22',
-         '35',
-         '45'        
+        ['\\frac{1}{2}\\sqrt{3}',
+         '\\frac{1}{2}\\sqrt{2}',
+         '\\frac{1}{2}',
+         '0'        
         ]
     },
     {
         question: 'cosec(30^\\circ)=...',
-        answer: '45',
+        answer: '2',
         option: 
-        ['10',
-         '22',
-         '35',
-         '45'        
+        ['\\frac{1}{2}\\sqrt{3}',
+         '\\frac{1}{2}',
+         '2',
+         '\\frac{1}{2}\\sqrt{2}'        
+        ]
+    },
+    {
+        question: '\\lim_{x\\to0} \\frac{sin(x)}{x}=...',
+        answer: '1',
+        option: 
+        ['Tidak terdefinisi',
+         '\\frac{1}{2}',
+         '2',
+         '1'        
+        ]
+    },
+    {
+        question: '\\lim_{x\\to0}x^2sin(\\frac{1}{x})=...',
+        answer: '0',
+        option: 
+        ['Undefined',
+         '\\frac{1}{2}',
+         '0',
+         '1'        
+        ]
+    },
+    {
+        question: 'f(x)=\\ln{x^2+2}, f(x)=...',
+        answer: '\\frac{2x}{x^2+2}',
+        option: 
+        ['\\frac{2x}{x^2+2}',
+         '\\frac{1}{x^2+2}',
+         '\\log_x(x^2+2)',
+         '\\frac{1}{\\ln{x^2+2}'        
         ]
     },
 ]
