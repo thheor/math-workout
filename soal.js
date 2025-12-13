@@ -75,7 +75,7 @@ export let soalMath = [
         question: '\\lim_{x\\to0} \\frac{sin(x)}{x}=...',
         answer: '1',
         option: 
-        ['Tidak terdefinisi',
+        ['Undefined',
          '\\frac{1}{2}',
          '2',
          '1'        
@@ -92,13 +92,13 @@ export let soalMath = [
         ]
     },
     {
-        question: 'f(x)=\\ln{x^2+2}, f(x)=...',
+        question: 'f(x)=\\ln(x^2+2), f(x)=...',
         answer: '\\frac{2x}{x^2+2}',
         option: 
         ['\\frac{2x}{x^2+2}',
          '\\frac{1}{x^2+2}',
          '\\log_x(x^2+2)',
-         '\\frac{1}{\\ln{x^2+2}'        
+         '\\frac{1}{\\ln{x^2+2}}'       
         ]
     },
 ]

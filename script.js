@@ -40,6 +40,7 @@ btnD.addEventListener('click', checkAnswer);
 continueBtn.addEventListener('click', () => {
     noSoal++;
     nomorSoal.textContent = noSoal;
+    resetOption();
     setUp();
     main.classList.remove('pointer-events-none');
 });
@@ -57,6 +58,7 @@ function setUp(){
     while(soalIndex === lastIndex){
         soalIndex = Math.floor(Math.random() * soalMath.length);
     }
+    console.log('soalIndex: ', soalIndex);
     lastIndex = soalIndex;
     createSoal(soalIndex);
 }
@@ -69,8 +71,6 @@ function createSoal(soalIndex){
     btnB.innerHTML = katex.renderToString(soalMath[soalIndex].option[1]);
     btnC.innerHTML = katex.renderToString(soalMath[soalIndex].option[2]);
     btnD.innerHTML = katex.renderToString(soalMath[soalIndex].option[3]);
-
-    console.log(soalIndex);
 }
 
 function checkAnswer(e){
@@ -84,6 +84,9 @@ function checkAnswer(e){
 
     console.log(e.currentTarget.dataset.latex);
     if(e.currentTarget.dataset.latex === soalMath[soalIndex].answer){
+        // console.log(e.currentTarget)
+        e.currentTarget.classList.remove('border-blue-700');
+        e.currentTarget.classList.add('bg-green-500');
         correctCount++;
         jumlahBenar.textContent = correctCount;
         feedback.textContent = correctAns[index];
@@ -92,6 +95,8 @@ function checkAnswer(e){
         continueBtn.classList.add('bg-blue-500');
         // setUp();
     } else {
+        e.currentTarget.classList.remove('border-blue-700');
+        e.currentTarget.classList.add('bg-red-500');
         wrongCount++;
         jumlahSalah.textContent = wrongCount;
         feedback.textContent = wrongAns[index];
@@ -100,6 +105,13 @@ function checkAnswer(e){
         continueBtn.classList.add('bg-red-500');
         // setUp();
     }
+}
+
+function resetOption(){
+    [btnA, btnB, btnC, btnD].forEach(btn => {
+        btn.classList.remove('bg-green-500', 'bg-red-500');
+        btn.classList.add('border-blue-700');
+    });
 }
 
 setUp();
