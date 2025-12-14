@@ -27,7 +27,11 @@ const btnA = document.querySelector('.a'),
       nomorSoal = document.querySelector('.no-soal'),
       ansResult = document.querySelector('.check-answer'),
       feedback = document.querySelector('.feedback'),
-      continueBtn = document.querySelector('.continue');
+      continueBtn = document.querySelector('.continue'),
+      explanation = document.querySelector('.explanation'),
+      explainSection = document.querySelector('.explanation-section'),
+      checkExp = document.querySelector('.check-explanation'),
+      quitExplanation = document.querySelector('.fa-solid');
 
 let noSoal = 1;
 let correctCount = 0;
@@ -44,6 +48,15 @@ continueBtn.addEventListener('click', () => {
     setUp();
     main.classList.remove('pointer-events-none');
 });
+// checkExp.addEventListener('click', () => {
+//     console.log('checkExp clicked');
+//     explainSection.classList.remove('hidden');
+//     explainSection.classList.add('initial');
+//     showExplain();
+// });
+// quitExplanation.addEventListener('click', () => {
+//     explainSection.classList.add('hidden');
+// }) 
 
 nomorSoal.textContent = noSoal;
 
@@ -104,6 +117,12 @@ function checkAnswer(e){
         continueBtn.classList.remove('bg-blue-500');
         continueBtn.classList.add('bg-red-500');
         // setUp();
+        [btnA, btnB, btnC, btnD].forEach(btn => {
+        if(btn.dataset.latex === soalMath[soalIndex].answer){
+            btn.classList.remove('border-blue-700');
+            btn.classList.add('bg-green-500');
+        }
+    });
     }
 }
 
@@ -112,6 +131,10 @@ function resetOption(){
         btn.classList.remove('bg-green-500', 'bg-red-500');
         btn.classList.add('border-blue-700');
     });
+}
+
+function showExplain(){
+    explanation.innerHTML = katex.renderToString(soalMath[2].explain, { displayMode: true });
 }
 
 setUp();
