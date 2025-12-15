@@ -48,15 +48,15 @@ continueBtn.addEventListener('click', () => {
     setUp();
     main.classList.remove('pointer-events-none');
 });
-// checkExp.addEventListener('click', () => {
-//     console.log('checkExp clicked');
-//     explainSection.classList.remove('hidden');
-//     explainSection.classList.add('initial');
-//     showExplain();
-// });
-// quitExplanation.addEventListener('click', () => {
-//     explainSection.classList.add('hidden');
-// }) 
+checkExp.addEventListener('click', () => {
+    console.log('checkExp clicked');
+    explainSection.classList.remove('hidden');
+    explainSection.classList.add('initial');
+    showExplain();
+});
+quitExplanation.addEventListener('click', () => {
+    explainSection.classList.add('hidden');
+}) 
 
 nomorSoal.textContent = noSoal;
 
@@ -134,7 +134,7 @@ function resetOption(){
 }
 
 function showExplain(){
-    explanation.innerHTML = katex.renderToString(soalMath[2].explain, { displayMode: true });
+    explanation.innerHTML = katex.renderToString(currentQuestion.explain);
 }
 
 setUp();
