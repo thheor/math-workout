@@ -31,16 +31,25 @@ const btnA = document.querySelector('.a'),
       explanation = document.querySelector('.explanation'),
       explainSection = document.querySelector('.explanation-section'),
       checkExp = document.querySelector('.check-explanation'),
-      quitExplanation = document.querySelector('.fa-solid');
+      quitExplanation = document.querySelector('.fa-solid'),
+      correctSound = new Audio('https://raw.githubusercontent.com/thheor/math-workout/main/sound/correct.wav'),
+      wrongSound = new Audio('https://raw.githubusercontent.com/thheor/math-workout/main/sound/wrong.mp3'),
+      soundBtn = document.querySelector('.sound');
 
 let noSoal = 1;
 let correctCount = 0;
 let wrongCount = 0;
+let sound = true;
 
 btnA.addEventListener('click', checkAnswer);
 btnB.addEventListener('click', checkAnswer);
 btnC.addEventListener('click', checkAnswer);
 btnD.addEventListener('click', checkAnswer);
+soundBtn.addEventListener('click', () => {
+    const icon = document.querySelector('#icon')
+    icon.classList.toggle('fa-volume-xmark')
+    sound = !sound;
+})
 continueBtn.addEventListener('click', () => {
     noSoal++;
     nomorSoal.textContent = noSoal;
@@ -106,6 +115,9 @@ function checkAnswer(e){
         ansResult.style.display = 'initial';
         continueBtn.classList.remove('bg-red-500');
         continueBtn.classList.add('bg-blue-500');
+        if(sound){
+            correctSound.play()
+        }
         // setUp();
     } else {
         e.currentTarget.classList.remove('border-blue-700');
@@ -116,6 +128,9 @@ function checkAnswer(e){
         ansResult.style.display = 'initial';
         continueBtn.classList.remove('bg-blue-500');
         continueBtn.classList.add('bg-red-500');
+        if(sound){
+            wrongSound.play();
+        }
         // setUp();
         [btnA, btnB, btnC, btnD].forEach(btn => {
         if(btn.dataset.latex === soalMath[soalIndex].answer){
