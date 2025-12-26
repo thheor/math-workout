@@ -107,35 +107,36 @@ function checkAnswer(e){
     console.log(e.currentTarget.dataset.latex);
     if(e.currentTarget.dataset.latex === soalMath[soalIndex].answer){
         // console.log(e.currentTarget)
-        e.currentTarget.classList.remove('border-blue-700');
-        e.currentTarget.classList.add('bg-green-500');
+        // e.currentTarget.classList.remove('border-blue-700');
+        e.currentTarget.classList.add('bg-green-500', 'dark:bg-green-700');
         correctCount++;
         jumlahBenar.textContent = correctCount;
         feedback.textContent = correctAns[index];
         ansResult.style.display = 'initial';
-        continueBtn.classList.remove('bg-red-500');
-        continueBtn.classList.add('bg-blue-500');
+        continueBtn.classList.remove('bg-red-500', 'dark:bg-red-700');
+        continueBtn.classList.add('bg-green-500', 'dark:bg-green-700');
         if(sound){
             correctSound.play()
         }
         // setUp();
     } else {
-        e.currentTarget.classList.remove('border-blue-700');
-        e.currentTarget.classList.add('bg-red-500');
+        // e.currentTarget.classList.remove('border-blue-700');
+        e.currentTarget.classList.add('bg-red-500', 'dark:bg-red-700');
         wrongCount++;
         jumlahSalah.textContent = wrongCount;
         feedback.textContent = wrongAns[index];
         ansResult.style.display = 'initial';
-        continueBtn.classList.remove('bg-blue-500');
-        continueBtn.classList.add('bg-red-500');
+        continueBtn.classList.remove('bg-green-500', 'dark:bg-green-700');
+        continueBtn.classList.add('bg-red-500', 'dark:bg-red-700');
         if(sound){
             wrongSound.play();
         }
         // setUp();
         [btnA, btnB, btnC, btnD].forEach(btn => {
         if(btn.dataset.latex === soalMath[soalIndex].answer){
-            btn.classList.remove('border-blue-700');
+            // btn.classList.remove('border-blue-700');
             btn.classList.add('bg-green-500');
+            btn.classList.add('dark:bg-green-700')
         }
     });
     }
@@ -143,7 +144,7 @@ function checkAnswer(e){
 
 function resetOption(){
     [btnA, btnB, btnC, btnD].forEach(btn => {
-        btn.classList.remove('bg-green-500', 'bg-red-500');
+        btn.classList.remove('bg-green-500', 'bg-red-500', 'dark:bg-green-700', 'dark:bg-red-700');
         btn.classList.add('border-blue-700');
     });
 }
