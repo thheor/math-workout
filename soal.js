@@ -87,8 +87,8 @@ export let soalMath = [
         question: '\\lim_{x\\to0}x^2sin(\\frac{1}{x})=...',
         answer: '0',
         explain: `\\text{Use Squeeze Theorem} \\newline
-                \\
-                \\text{NOTE: use squeeze theorem only if you can\'t \\newline get the resut by using L\'Hopital\'s rule}`,
+                \\text{NOTE: use squeeze theorem only if you can\'t} \\newline
+                \\text{get the resut by using L\'Hopital\'s rule}`,
         option: 
         ['Undefined',
          '\\frac{1}{2}',
